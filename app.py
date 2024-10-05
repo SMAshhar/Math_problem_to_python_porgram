@@ -1,6 +1,6 @@
 # CrewAi
 from crewai import Agent, Crew, Task
-# from crewai_tools import CodeInterpreterTool
+from crewai_tools import CodeInterpreterTool
 from langchain_groq import ChatGroq
 
 
@@ -16,7 +16,7 @@ from utils import get_openai_api_key, get_serper_api_key, get_groq_api_key
 # )
 # scrape_tool = ScrapeWebsiteTool()
 
-# tools: List[object] = [CodeInterpreterTool()]
+tools: List[object] = [CodeInterpreterTool()]
 
 # environment variables
 open_ai_key = get_openai_api_key()
@@ -141,7 +141,7 @@ code_executor = Agent(
                 eye for optimization and a commitment to delivering perfect solutions, you approach each challenge with a blend of creativity and rigor.
                 Given the understand_problem_analysis from a top-tier software engineer, you leverage your knowledge to craft code snippets that can tackle any input, regardless of complexity. You are driven by a desire to create solutions that are not only correct but also efficient, scalable, and future-proof.
                 """),
-    # tools=[CodeInterpreterTool],
+    tools=[CodeInterpreterTool],
     llm=llm,
     verbose=True,
     allow_delegation=False
@@ -246,7 +246,7 @@ code_executor_task = Task(
     3. Performance statistics (optional) such as runtime and memory usage, if required.
     """,
     context=[code_generation_task],
-    # tools=[CodeInterpreterTool],  # Using the CodeInterpreterTool for execution
+    tools=[CodeInterpreterTool],  # Using the CodeInterpreterTool for execution
     async_execution=False,  # Task should be synchronous for accurate output
     agent=code_executor  # Assigning the 'code_executor' agent to execute this task
 )
