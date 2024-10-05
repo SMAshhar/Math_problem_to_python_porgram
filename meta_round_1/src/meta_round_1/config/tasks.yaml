@@ -1,0 +1,41 @@
+understand_problem_task:
+  description: >
+    Analyze the given {problem} statement to identify and extract all relevant components for the next stages of processing.
+    You are required to:
+    1. Parse the *constraints* provided in the {problem} to define the boundaries within which the solution must operate.
+    2. Identify the *input format* specifications, including the types and structure of data that will be provided.
+    3. Define the *output format* based on the {problem} requirements, ensuring that it aligns with the specified solution expectations.
+    4. Break down the {problem} into key steps that will be handled in subsequent stages.
+    5. Provide detailed explanations or clarifications on any ambiguities in the {problem} statement.
+    6. Consider edge cases and potential issues that might arise in the solution process and document them for later agents.
+    
+  expected_output: >
+    A well-structured and detailed breakdown of the {problem} that includes:
+    1. A clear list of constraints.
+    2. A description of the input format with examples.
+    3. A description of the expected output format with examples.
+    4. A list of steps for solving the {problem}, organized for further agents to implement.
+    5. A list of edge cases and ambiguous areas to be addressed in future stages.
+    6. A .md file carrying all this detail
+  agent: phd_mathematician
+
+design_algorithm_task:
+  description: >
+    Design an efficient algorithm that can solve the given problem based on the 'understand_problem_task'. 
+    The task requires you to:
+    1. Review the 'understand_problem_task' thoroughly and extract the key constraints, input/output format, and edge cases.
+    2. Identify and define the core logic and steps necessary to solve the problem efficiently while adhering to the constraints.
+    3. Ensure the algorithm can handle all edge cases and minimize the time and space complexity.
+    4. Develop a solution that is scalable and works across varying input sizes, ensuring it provides accurate results under all possible scenarios.
+    5. Optimize the algorithm by leveraging the appropriate data structures, mathematical models, and techniques.
+    6. Provide an explanation of how the algorithm handles the different edge cases, constraints, and performs under typical as well as extreme conditions.
+    
+  expected_output: >
+    A detailed algorithm that:
+    1. Precisely addresses the problem using the 'understand_problem_task'.
+    2. Includes pseudocode or a high-level flowchart of the core steps involved in solving the problem.
+    3. A description of the chosen approach, including justifications for the data structures and optimization techniques used.
+    4. A well-explained handling of edge cases and constraints.
+    5. An analysis of the time and space complexity of the algorithm.
+    6. A final Python implementation ready for testing and deployment.
+  agent: computer_scientist

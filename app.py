@@ -1,6 +1,6 @@
 # CrewAi
 from crewai import Agent, Crew, Task
-from crewai_tools import CodeInterpreterTool
+# from crewai_tools import CodeInterpreterTool
 from langchain_groq import ChatGroq
 
 
@@ -16,7 +16,7 @@ from utils import get_openai_api_key, get_serper_api_key, get_groq_api_key
 # )
 # scrape_tool = ScrapeWebsiteTool()
 
-tools: List[object] = [CodeInterpreterTool()]
+# tools: List[object] = [CodeInterpreterTool()]
 
 # environment variables
 open_ai_key = get_openai_api_key()
@@ -141,7 +141,7 @@ code_executor = Agent(
                 eye for optimization and a commitment to delivering perfect solutions, you approach each challenge with a blend of creativity and rigor.
                 Given the understand_problem_analysis from a top-tier software engineer, you leverage your knowledge to craft code snippets that can tackle any input, regardless of complexity. You are driven by a desire to create solutions that are not only correct but also efficient, scalable, and future-proof.
                 """),
-    tools=[CodeInterpreterTool],
+    # tools=[CodeInterpreterTool],
     llm=llm,
     verbose=True,
     allow_delegation=False
@@ -246,7 +246,7 @@ code_executor_task = Task(
     3. Performance statistics (optional) such as runtime and memory usage, if required.
     """,
     context=[code_generation_task],
-    tools=[CodeInterpreterTool],  # Using the CodeInterpreterTool for execution
+    # tools=[CodeInterpreterTool],  # Using the CodeInterpreterTool for execution
     async_execution=False,  # Task should be synchronous for accurate output
     agent=code_executor  # Assigning the 'code_executor' agent to execute this task
 )
@@ -260,7 +260,7 @@ math_crew = Crew(
 def solving_math (problem:str):
     return math_crew.kickoff(inputs=problem)
     
-solving_math(
+solving_math(inputs={"input":
 """You’ve found a solution to an implementation-heavy geometry problem that requires typing out \(N\) lines of code. Annoyingly, you only have a \(P\%\) chance of typing out any given line without a mistake, and your code will only be accepted if all \(N\) lines are correct. The chance of making a mistake in one line is independent of the chance of making a mistake in any other line.
 
 You realize there might be a solution which only requires \(N-1\) lines (each also having a \(P\%\) chance of being typed correctly). However, instead of thinking about that, you could also just type out the \(N\)-line solution more carefully to increase \(P\). How much would $P$ have to increase to yield the same chance of success as needing to type one fewer line of code?
@@ -281,4 +281,5 @@ Your answer will be accepted if it is within an absolute or relative error of \(
 # Sample Explanation
 In the first case, you initially need to type \(2\) lines. You can either type just \(1\) line with a \(50\%\) success rate, or you could improve your typing accuracy to \(\sqrt{50\%} $\approx$ 70.710678\%\), at which point you'd have a \(\sqrt{50\%}^2 = 50\%\) chance of successfully typing the original \(2\) lines. So you would need to increase \(P\) by \(70.710678 - 50 = 20.710678\) for both approaches to have an equal chance of success.
 """
+                     }
 )

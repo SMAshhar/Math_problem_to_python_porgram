@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "meta_round_1"
+version = "0.1.0"
+description = "meta-round-1 using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = ">=0.55.2,<1.0.0" }
+
+
+[tool.poetry.scripts]
+meta_round_1 = "meta_round_1.main:run"
+run_crew = "meta_round_1.main:run"
+train = "meta_round_1.main:train"
+replay = "meta_round_1.main:replay"
+test = "meta_round_1.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
