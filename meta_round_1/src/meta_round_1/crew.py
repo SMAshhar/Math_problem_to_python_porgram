@@ -1,5 +1,5 @@
 from crewai import Agent, Crew, Process, Task
-from crewai import LLM
+# from crewai import LLM
 from crewai.project import CrewBase, agent, crew, task
 
 
@@ -46,12 +46,12 @@ class MetaRound1Crew():
 			config=self.agents_config['computer_programmer'],
 			verbose=True
 		)
-	@agent
-	def code_interpretor(self) -> Agent:
-		return Agent(
-			config=self.agents_config['code_interpretor'],
-			verbose=True
-		)
+	# @agent
+	# def code_interpretor(self) -> Agent:
+	# 	return Agent(
+	# 		config=self.agents_config['code_interpretor'],
+	# 		verbose=True
+	# 	)
 
 	@task
 	def understand_problem_task(self) -> Task:
@@ -63,7 +63,7 @@ class MetaRound1Crew():
 	def design_algorithm_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['design_algorithm_task'],
-			output_file='report.md'
+			output_file='solve_problem.md'
 		)
 
 	@task
@@ -72,12 +72,12 @@ class MetaRound1Crew():
 			config=self.tasks_config['code_generation_task'],
 		)
 
-	@task
-	def code_executor_taskk(self) -> Task:
-		return Task(
-			config=self.tasks_config['code_executor_taskk'],
-			output_file='report.md'
-		)
+	# @task
+	# def code_executor_taskk(self) -> Task:
+	# 	return Task(
+	# 		config=self.tasks_config['code_executor_taskk'],
+	# 		output_file='report.md'
+	# 	)
 
 	@crew
 	def crew(self) -> Crew:

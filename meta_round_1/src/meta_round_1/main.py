@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
-from meta_round_1.crew import MetaRound1Crew
+from crew import MetaRound1Crew
+from maker.maker import statement_maker
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding necessary logic into this file.
@@ -19,12 +20,29 @@ problem_statement = ("""
     For the (i)th test case, print "Case #i: " followed by how much higher (P) would need to be to make spending your time typing carefully be as successful as typing one line fewer with your original (P).
     Your answer will be accepted if it is within an absolute or relative error of (10^-6).
     # Sample Explanation
-    In the first case, you initially need to type (2) lines. You can either type just (1) line with a (50%) success rate, or you could improve your typing accuracy to (sqrt{50%} $approx$ 70.710678%), at which point you'd have a (sqrt{50%}^2 = 50%) chance of successfully typing the original (2) lines. So you would need to increase (P) by (70.710678 - 50 = 20.710678) for both approaches to have an equal chance of success.
+    In the first case, you initially need to type (2) lines. You can either type just (1) line with a (50%) success rate, or you could improve your typing accuracy to (sqrt(50%) $approx$ 70.710678%), at which point you'd have a (sqrt(50%)^2 = 50%) chance of successfully typing the original (2) lines. So you would need to increase (P) by (70.710678 - 50 = 20.710678) for both approaches to have an equal chance of success.
 """)
 # the following statement uses
-with open("src/meta_round_1/test.md", 'r') as f:
-    problem_statement_1 = f.read()
+# with open("src/meta_round_1/test.md", 'r') as f:
+#     problem_statement_1 = f.read()
+    # problem_statement_1=problem_statement_1.replace('{', '(')
+    # problem_statement_1=problem_statement_1.replace('}', ')')
 
+full_statement = ''
+
+with open ("./maker/statement.txt", "r") as f:
+    full_statement = f.read()
+
+with open("./maker/sample_in.txt", "r") as f:
+    full_statement += "\nsample_input"
+    full_statement += f.read()
+
+with open("./maker/sample_out.txt", "r") as f:
+    full_statement += "\nsample_output"
+    full_statement += f.read()
+
+
+problem_statement_1=statement_maker(full_statement=full_statement)
 
 def run():
     """
@@ -71,3 +89,5 @@ def test():
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
+
+# run()
